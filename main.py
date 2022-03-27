@@ -37,6 +37,7 @@ splashes.close()
 with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
+    myzip.write('pack.png')
 
 # Cleanup
 os.remove("splashes.txt")
