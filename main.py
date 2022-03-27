@@ -1,6 +1,6 @@
 import os, sys, shutil, zipfile
 
-resource_pack_file_name = "FortuneResourcePack.zip"
+from settings import *
 
 ARGS = sys.argv
 if (str(ARGS[1]).__contains__(".dat")):
@@ -13,13 +13,23 @@ count = len(ARGS)
 count = count - 1
 for i in range(count):
     counts = i + 1
-    FortunePath = open(str(ARGS[counts]),"r")
-    lines = FortunePath.read()
-    line = str(lines)
-    line = line.replace('\n', '')
-    line = line.replace('%', ' \n')
-    splashes = open("splashes.txt", "a")
-    splashes.write(str(line))
+    with open(ARGS[counts], 'r') as splash:
+        lines = splash.readlines()
+        with open('splashes1.txt', 'w') as fw:
+            for line in lines:
+                if Hide_Quotes == True:
+                    if line.find('--') == -1:
+                        fw.write(line)
+                else:
+                    fw.write(line)
+
+FortunePath = open("splashes1.txt","r")
+lines = FortunePath.read()
+line = str(lines)
+line = line.replace('\n', '')
+line = line.replace('%', '\n')
+splashes = open("splashes.txt", "a")
+splashes.write(str(line))
 
 # Create needed paths
 if not os.path.exists("assets"):
@@ -49,6 +59,7 @@ with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
 
 # Cleanup
 os.remove("splashes.txt")
+os.remove("splashes1.txt")
 shutil.rmtree("assets")
 
 # Print
