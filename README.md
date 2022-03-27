@@ -2,6 +2,8 @@
 
 Converts fortune files into a minecraft resource pack
 
+This script converts files for the CLI program [Fortune](https://github.com/shlomif/fortune-mod) into a Minecraft: Java Edition resource pack, because why not
+
 This script has been tested on Linux, but it should work on MacOS and Windows
 
 
