@@ -1,9 +1,12 @@
 import os, sys, shutil, zipfile
 
 resource_pack_file_name = "FortuneResourcePack.zip"
+
 ARGS = sys.argv
 if (str(ARGS[1]).__contains__(".dat")):
     ARGS[1] = str(ARGS[1])[:-4]
+if os.path.exists(resource_pack_file_name):
+    os.remove(resource_pack_file_name)
 
 
 count = len(ARGS)
@@ -13,7 +16,8 @@ for i in range(count):
     FortunePath = open(str(ARGS[counts]),"r")
     lines = FortunePath.read()
     line = str(lines)
-    line = line.replace('%', ' ')
+    line = line.replace('\n', '')
+    line = line.replace('%', ' \n')
     splashes = open("splashes.txt", "a")
     splashes.write(str(line))
 
@@ -34,12 +38,10 @@ with open('splashes.txt', 'r') as splash:
     with open('assets/minecraft/texts/splashes.txt', 'w') as fw:
         for line in lines:
             if not line.isspace():
-                if line.find('BOFH excuse') == -1:
-                    if line.find('--') == -1:
-                        fw.write(line)
+                fw.write(line)
 splashes.close()
 
-# Put everything in a zip file 
+# Put everything in a zip file
 with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
