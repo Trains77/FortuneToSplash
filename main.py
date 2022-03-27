@@ -20,7 +20,7 @@ if not os.path.exists("assets/minecraft/texts"):
 with open("pack.mcmeta", "a") as pack:
      pack.writelines(["{\n", '  "pack_format": 8,\n', '    "description": "Fortune Resource pack"\n', '  }\n', '}\n' ])
 
-# Create splashes.txt file ZipFile.testzip()¶
+# Create splashes.txt file
 splashes = open("splashes.txt", "a")
 splashes.write(str(line))
 with open('splashes.txt', 'r') as splash:
