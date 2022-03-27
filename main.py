@@ -27,7 +27,7 @@ for i in range(count):
 FortunePath = open("splashes1.txt","r")
 lines = FortunePath.read()
 line = str(lines)
-line = line.replace('\n', '')
+line = line.replace('\n', ' ')
 line = line.replace('%', '\n')
 splashes = open("splashes.txt", "a")
 splashes.write(str(line))
