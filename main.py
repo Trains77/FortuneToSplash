@@ -23,6 +23,7 @@ with open("FortuneResourcePack/pack.mcmeta", "a") as pack:
 splashes = open("splashes.txt", "w")
 splashes.write(str(line))
 
+
 with open('splashes.txt', 'r') as splash:
     lines = splash.readlines()
     with open('FortuneResourcePack/assets/minecraft/texts/splashes.txt', 'w') as fw:
@@ -30,5 +31,7 @@ with open('splashes.txt', 'r') as splash:
             if line.find('BOFH excuse') == -1:
                 fw.write(line)
 splashes.close()
+
+os.remove("splashes.txt")
 
 print("Saved resource pack to folder FortuneResourcePack")
