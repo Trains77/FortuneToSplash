@@ -18,10 +18,10 @@ if not os.path.exists("assets/minecraft/texts"):
 
 # Create pack.mcmeta file
 with open("pack.mcmeta", "a") as pack:
-    pack.writelines(["{\n", '    "pack_format": 8,\n', '    "description": "Fortune Resource pack"\n', '  }\n', '}\n' ])
+     pack.writelines(["{\n", '  "pack_format": 8,\n', '    "description": "Fortune Resource pack"\n', '  }\n', '}\n' ])
 
-# Create splashes.txt file
-splashes = open("splashes.txt", "w")
+# Create splashes.txt file ZipFile.testzip()¶
+splashes = open("splashes.txt", "a")
 splashes.write(str(line))
 with open('splashes.txt', 'r') as splash:
     lines = splash.readlines()
@@ -32,14 +32,13 @@ with open('splashes.txt', 'r') as splash:
 splashes.close()
 
 # Put everything in a zip file
-with zipfile.ZipFile(resource_pack_file_name, 'a') as myzip:
+with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
 
 # Cleanup files
 os.remove("splashes.txt")
 shutil.rmtree("assets")
-os.remove("pack.mcmeta")
 
 # Print
 print("Saved resource pack to folder FortuneResourcePack.zip")
