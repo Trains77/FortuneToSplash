@@ -1,5 +1,4 @@
-import os, sys, shutil
-import zipfile
+import os, sys, shutil, zipfile
 
 ARGS = sys.argv
 FortunePath = open(str(ARGS[1]),"r")
