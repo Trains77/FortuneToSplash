@@ -33,9 +33,9 @@ with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
 
-# Cleanup files
+# Cleanup
 os.remove("splashes.txt")
 shutil.rmtree("assets")
 
 # Print
-print("Saved resource pack to folder FortuneResourcePack.zip")
+print("Saved resource pack to folder " + resource_pack_file_name)
