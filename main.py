@@ -19,6 +19,10 @@ for i in range(count):
             for line in lines:
                 if Hide_Quotes == True:
                     if line.find('--') == -1:
+                        if line.find('BOFH excuse') == -1:
+                            fw.write(line)
+                elif Hide_BOFH_Excuse == True:
+                    if line.find('BOFH excuse') == -1:
                         fw.write(line)
                 else:
                     fw.write(line)
