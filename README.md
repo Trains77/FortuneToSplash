@@ -12,6 +12,4 @@ How to run: `python main.py PATH_TO_FORTUNE_FILE`
 
 ## What I plan to add:
 
-Multiple fortune files support
-
 Support for fortunes that span multiple lines
