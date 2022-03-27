@@ -16,10 +16,6 @@ if not os.path.exists("assets/minecraft"):
 if not os.path.exists("assets/minecraft/texts"):
     os.mkdir("assets/minecraft/texts")
 
-# Create pack.mcmeta file
-with open("pack.mcmeta", "a") as pack:
-     pack.writelines(["{\n", '  "pack_format": 8,\n', '    "description": "Fortune Resource pack"\n', '  }\n', '}\n' ])
-
 # Create splashes.txt file
 splashes = open("splashes.txt", "a")
 splashes.write(str(line))
@@ -27,8 +23,9 @@ with open('splashes.txt', 'r') as splash:
     lines = splash.readlines()
     with open('assets/minecraft/texts/splashes.txt', 'w') as fw:
         for line in lines:
-            if line.find('BOFH excuse') == -1:
-                fw.write(line)
+            if not line.isspace():
+                if line.find('BOFH excuse') == -1:
+                    fw.write(line)
 splashes.close()
 
 # Put everything in a zip file
