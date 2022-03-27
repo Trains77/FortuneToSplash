@@ -15,13 +15,14 @@ for i in range(count):
     counts = i + 1
     with open(ARGS[counts], 'r') as splash:
         lines = splash.readlines()
-        with open('splashes1.txt', 'w') as fw:
+        with open('splashes1.txt', 'a') as fw:
             for line in lines:
                 if Hide_Quotes == True:
                     if line.find('--') == -1:
                         fw.write(line)
                 else:
                     fw.write(line)
+            fw.close()
 
 FortunePath = open("splashes1.txt","r")
 lines = FortunePath.read()
