@@ -1,17 +1,21 @@
 import os, sys, shutil, zipfile
 
-
-# Variables
+resource_pack_file_name = "FortuneResourcePack.zip"
 ARGS = sys.argv
-
 if (str(ARGS[1]).__contains__(".dat")):
     ARGS[1] = str(ARGS[1])[:-4]
 
-FortunePath = open(str(ARGS[1]),"r")
-lines = FortunePath.read()
-line = str(lines)
-resource_pack_file_name = "FortuneResourcePack.zip"
-line = line.replace('%', ' ')
+
+count = len(ARGS)
+count = count - 1
+for i in range(count):
+    counts = i + 1
+    FortunePath = open(str(ARGS[counts]),"r")
+    lines = FortunePath.read()
+    line = str(lines)
+    line = line.replace('%', ' ')
+    splashes = open("splashes.txt", "a")
+    splashes.write(str(line))
 
 # Create needed paths
 if not os.path.exists("assets"):
@@ -21,9 +25,10 @@ if not os.path.exists("assets/minecraft"):
 if not os.path.exists("assets/minecraft/texts"):
     os.mkdir("assets/minecraft/texts")
 
+
 # Create splashes.txt file
-splashes = open("splashes.txt", "a")
-splashes.write(str(line))
+
+
 with open('splashes.txt', 'r') as splash:
     lines = splash.readlines()
     with open('assets/minecraft/texts/splashes.txt', 'w') as fw:
@@ -34,7 +39,7 @@ with open('splashes.txt', 'r') as splash:
                         fw.write(line)
 splashes.close()
 
-# Put everything in a zip file
+# Put everything in a zip file 
 with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
