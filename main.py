@@ -1,7 +1,12 @@
 import os, sys, shutil, zipfile
 
+
 # Variables
 ARGS = sys.argv
+
+if (str(ARGS[1]).__contains__(".dat")):
+    ARGS[1] = str(ARGS[1])[:-4]
+
 FortunePath = open(str(ARGS[1]),"r")
 lines = FortunePath.read()
 line = str(lines)
