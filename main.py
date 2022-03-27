@@ -30,7 +30,8 @@ with open('splashes.txt', 'r') as splash:
         for line in lines:
             if not line.isspace():
                 if line.find('BOFH excuse') == -1:
-                    fw.write(line)
+                    if line.find('--') == -1:
+                        fw.write(line)
 splashes.close()
 
 # Put everything in a zip file
