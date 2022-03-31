@@ -6,6 +6,10 @@ This script converts files for the CLI program [Fortune](https://github.com/shlo
 
 How to run: `python main.py FORTUNE_FILES`
 
-## System support
+## System Support
 
 It should work on any platform, however it has only been tested on Linux
+
+## Known Issues
+
+Large fortunes appear as really small and hard to read text, there is no real fix for this without modding the game itself
