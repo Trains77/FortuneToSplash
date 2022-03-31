@@ -1,5 +1,4 @@
 import os, sys, shutil, zipfile
-
 from settings import *
 
 ARGS = sys.argv
@@ -36,16 +35,12 @@ line = line.replace('%', '\n')
 splashes = open("splashes.txt", "a")
 splashes.write(str(line))
 
-# Create needed paths
 if not os.path.exists("assets"):
     os.mkdir("assets")
 if not os.path.exists("assets/minecraft"):
     os.mkdir("assets/minecraft")
 if not os.path.exists("assets/minecraft/texts"):
     os.mkdir("assets/minecraft/texts")
-
-
-# Create splashes.txt file
 
 
 with open('splashes.txt', 'r') as splash:
@@ -56,16 +51,12 @@ with open('splashes.txt', 'r') as splash:
                 fw.write(line)
 splashes.close()
 
-# Put everything in a zip file
 with zipfile.ZipFile(resource_pack_file_name, 'w') as myzip:
     myzip.write('assets/minecraft/texts/splashes.txt')
     myzip.write('pack.mcmeta')
     myzip.write('pack.png')
 
-# Cleanup
 os.remove("splashes.txt")
 os.remove("splashes1.txt")
 shutil.rmtree("assets")
-
-# Print
 print("Saved resource pack to folder " + resource_pack_file_name)
